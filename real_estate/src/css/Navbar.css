@@ -1,0 +1,31 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }
+  
+  .navbar-links {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .navbar-item {
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
+  }
+  
+  .navbar-item:hover {
+    text-decoration: underline;
+  }
+  
+  .form-inline {
+    display: flex;
+    align-items: center;
+  }
+  
+  .form-control {
+    margin-right: 0.5rem;
+  }
+  
