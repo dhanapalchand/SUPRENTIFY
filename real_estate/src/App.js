@@ -14,6 +14,7 @@ import Interest from './components/Interest';
 import Profile from './components/Profile.js';
 import ContactUs from './components/Contact.js';
 import { FilterProvider } from './components/FilterContext'; // Import FilterProvider
+import SingleLand from './components/AboutLand.js';
 
 function App() {
   const { user, dispatch } = useContext(authContext);
@@ -41,6 +42,7 @@ function App() {
             <Route path="landupdate/:id" element={<LandUpdate />} />
             <Route path="interest" element={<Interest />} />
             <Route path="userdetails/:id" element={<Profile />} />
+            <Route path="aboutland/:id" element={<SingleLand />} />
             <Route path="contactdetails/:id" element={<ContactUs />} />
           </Route>
         )}

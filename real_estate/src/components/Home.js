@@ -19,7 +19,7 @@ const Home = () => {
   const [likedLands, setLikedLands] = useState([]);
   const [likeData, setLikeData] = useState([]);
   const [showMore, setShowMore] = useState({});
-
+console.log(user);
   const buttonStyle = {
     position: 'fixed',
     top: '90%',
@@ -251,10 +251,7 @@ const Home = () => {
   }, [like]);
 
   const toggleShowMore = (landId) => {
-    setShowMore(prevShowMore => ({
-      ...prevShowMore,
-      [landId]: !prevShowMore[landId],
-    }));
+    navigate(`/dashboard/aboutland/${landId}`);
   };
 
   return (
@@ -276,14 +273,14 @@ const Home = () => {
                   <h5 className="card-title">{land.place}</h5>
                   <p className="card-text">Area: {land.area}</p>
                   <p className="card-text">Price: ${land.price}</p>
-                  {showMore[land._id] && (
+                  {/* {showMore[land._id] && (
                     <div>
                       <p className="card-text">Bedrooms: {land.numberOfBedrooms}</p>
                       <p className="card-text">Bathrooms: {land.numberOfBathrooms}</p>
                       <p className="card-text">Nearby Hospitals: {land.nearbyHospitals ? 'Yes' : 'No'}</p>
                       <p className="card-text">Nearby Colleges: {land.nearbyColleges ? 'Yes' : 'No'}</p>
                     </div>
-                  )}
+                  )} */}
                   <p className="card-text">
                     <IoHeart style={{ color: land.liked ? 'red' : 'black', marginRight: '5px', cursor: 'pointer' }}
                       onClick={() => handleLikeClick(land)} />

@@ -3,15 +3,19 @@ import { NavLink, Outlet } from 'react-router-dom';
 import { SidebarData } from './Navbardata';
 import realestate_log from '../images/realestate_logo.png';
 import '../css/Navbar.css';
-import { FilterContext } from './FilterContext'; // Import FilterContext
+import { FilterContext } from './FilterContext';
+import { authContext } from '../hooks/authContext';
 
 const TopNavBarComponent = ({ onLogout }) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const { toggleFilterBar } = useContext(FilterContext); // Access the toggleFilterBar function
+  const { toggleFilterBar } = useContext(FilterContext);
+  const { user } = useContext(authContext);
 
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
   };
+
+  console.log(user.user.role);
 
   return (
     <>
@@ -27,23 +31,28 @@ const TopNavBarComponent = ({ onLogout }) => {
             </button>
             <div className={`collapse navbar-collapse justify-content-end ${isNavOpen ? 'show' : ''}`} id="navbarNav">
               <div className="navbar-nav">
-                {SidebarData.map((item, index) => (
-                  <NavLink
-                    key={index}
-                    to={item.path}
-                    className="nav-item nav-link"
-                    style={{ fontSize: "20px", color: isNavOpen ? 'blue' : '#2F4F4F' }}
-                    activeClassName="active"
-                  >
-                    {item.icon}
-                    <span className="navbar-item-title">{item.title}</span>
-                  </NavLink>
-                ))}
+                {SidebarData.map((item, index) => {
+                  if (item.title === 'MyLands' && user.user.role === 'buyer') {
+                    return null; // Don't render the "MyLand" NavLink if user role is "buyer"
+                  }
+                  return (
+                    <NavLink
+                      key={index}
+                      to={item.path}
+                      className="nav-item nav-link"
+                      style={{ fontSize: "20px", color: isNavOpen ? 'blue' : '#2F4F4F' }}
+                      activeClassName="active"
+                    >
+                      {item.icon}
+                      <span className="navbar-item-title">{item.title}</span>
+                    </NavLink>
+                  );
+                })}
               </div>
               <NavLink 
                 className="nav-item nav-link" 
                 style={{ fontSize: "20px", color: isNavOpen ? 'blue' : '#2F4F4F' }}
-                onClick={toggleFilterBar} // Use the toggleFilterBar function
+                onClick={toggleFilterBar}
               >
                 Filter&nbsp;&nbsp;
               </NavLink>
