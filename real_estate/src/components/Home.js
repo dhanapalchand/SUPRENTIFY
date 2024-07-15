@@ -18,7 +18,7 @@ const Home = () => {
   const { showFilterBar } = useContext(FilterContext);
   const [likedLands, setLikedLands] = useState([]);
   const [likeData, setLikeData] = useState([]);
-  const [showMore, setShowMore] = useState({});
+ 
 console.log(user);
   const buttonStyle = {
     position: 'fixed',
@@ -221,7 +221,7 @@ console.log(user);
     };
 
     getLandData();
-  }, []);
+  }, [usertoken]);
 
   useEffect(() => {
     const getAllLiked = async () => {
@@ -248,7 +248,7 @@ console.log(user);
     };
 
     getAllLiked();
-  }, [like]);
+  }, [like,usertoken]);
 
   const toggleShowMore = (landId) => {
     navigate(`/dashboard/aboutland/${landId}`);
@@ -309,15 +309,17 @@ console.log(user);
         })}
       </div>
       <div className="text-end" style={{ paddingTop: '3%' }}>
-        <button
-          type="button"
-          className="btn btn-primary rounded-1 p-2 px-4 mb-4"
-          onClick={handleAddLandClick}
-          style={buttonStyle}
-        >
-          <span>Add Land</span>
-        </button>
-      </div>
+  {user.user.role !== 'buyer' && (
+    <button
+      type="button"
+      className="btn btn-primary rounded-1 p-2 px-4 mb-4"
+      onClick={handleAddLandClick}
+      style={buttonStyle}
+    >
+      <span>Add Land</span>
+    </button>
+  )}
+</div>
     </div>
   );
 };
