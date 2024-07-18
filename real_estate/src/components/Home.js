@@ -18,8 +18,8 @@ const Home = () => {
   const { showFilterBar } = useContext(FilterContext);
   const [likedLands, setLikedLands] = useState([]);
   const [likeData, setLikeData] = useState([]);
-  const [showMore, setShowMore] = useState({});
-
+ 
+console.log(user);
   const buttonStyle = {
     position: 'fixed',
     top: '90%',
@@ -221,7 +221,7 @@ const Home = () => {
     };
 
     getLandData();
-  }, []);
+  }, [usertoken]);
 
   useEffect(() => {
     const getAllLiked = async () => {
@@ -248,13 +248,10 @@ const Home = () => {
     };
 
     getAllLiked();
-  }, [like]);
+  }, [like,usertoken]);
 
   const toggleShowMore = (landId) => {
-    setShowMore(prevShowMore => ({
-      ...prevShowMore,
-      [landId]: !prevShowMore[landId],
-    }));
+    navigate(`/dashboard/aboutland/${landId}`);
   };
 
   return (
@@ -276,14 +273,14 @@ const Home = () => {
                   <h5 className="card-title">{land.place}</h5>
                   <p className="card-text">Area: {land.area}</p>
                   <p className="card-text">Price: ${land.price}</p>
-                  {showMore[land._id] && (
+                  {/* {showMore[land._id] && (
                     <div>
                       <p className="card-text">Bedrooms: {land.numberOfBedrooms}</p>
                       <p className="card-text">Bathrooms: {land.numberOfBathrooms}</p>
                       <p className="card-text">Nearby Hospitals: {land.nearbyHospitals ? 'Yes' : 'No'}</p>
                       <p className="card-text">Nearby Colleges: {land.nearbyColleges ? 'Yes' : 'No'}</p>
                     </div>
-                  )}
+                  )} */}
                   <p className="card-text">
                     <IoHeart style={{ color: land.liked ? 'red' : 'black', marginRight: '5px', cursor: 'pointer' }}
                       onClick={() => handleLikeClick(land)} />
@@ -312,15 +309,17 @@ const Home = () => {
         })}
       </div>
       <div className="text-end" style={{ paddingTop: '3%' }}>
-        <button
-          type="button"
-          className="btn btn-primary rounded-1 p-2 px-4 mb-4"
-          onClick={handleAddLandClick}
-          style={buttonStyle}
-        >
-          <span>Add Land</span>
-        </button>
-      </div>
+  {user.user.role !== 'buyer' && (
+    <button
+      type="button"
+      className="btn btn-primary rounded-1 p-2 px-4 mb-4"
+      onClick={handleAddLandClick}
+      style={buttonStyle}
+    >
+      <span>Add Land</span>
+    </button>
+  )}
+</div>
     </div>
   );
 };
