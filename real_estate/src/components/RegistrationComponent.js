@@ -292,7 +292,7 @@ export default function RegistrationComponent() {
                   />
                 </div>
                 {errorMessage && <div className="mb-3" style={{ color: 'red' }}>{errorMessage}</div>}
-                <button style={{ backgroundColor: "#6F4DF5" }} className="button rounded-2 w-100 text-white p-1 mb-1" type="submit">SIGN UP</button>
+                <button style={{ backgroundColor: "#008000" }} className="button rounded-2 w-100 text-white p-1 mb-1" type="submit">SIGN UP</button>
               </form>
               <div className="mb-2 mx-5">
                 Already have an account? <a href="/" className="link"><Link to="/login">Sign In</Link></a>

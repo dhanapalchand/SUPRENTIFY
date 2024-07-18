@@ -1,24 +1,25 @@
 
 .button{
-  background-color: #6F4DF5;
+  background-color :#008000;
   border: 0;
   border-radius: 10px;
 }
  
 .link{
+  
  text-decoration: none;
- color: #6F4DF5;
+ color: #008000;
  font-weight: 600;
 }
  
 .primary-color input{
-border-color: #6F4DF5;
+border-color: #008000;
 }
  
 .primary-color textarea {
-border-color: #6F4DF5;
+border-color: #008000;
 }
  
 .primary-color .phone {
-  border-color: #6F4DF5;
+  border-color: #008000;
   }
