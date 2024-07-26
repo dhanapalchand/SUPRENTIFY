@@ -6,6 +6,7 @@ import '../css/Navbar.css';
 import { FilterContext } from './FilterContext';
 import { authContext } from '../hooks/authContext';
 
+
 const TopNavBarComponent = ({ onLogout }) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const { toggleFilterBar } = useContext(FilterContext);
@@ -15,7 +16,7 @@ const TopNavBarComponent = ({ onLogout }) => {
     setIsNavOpen(!isNavOpen);
   };
 
-  console.log(user.user.role);
+  console.log(user.user.firstName);
 
   return (
     <>
@@ -24,7 +25,7 @@ const TopNavBarComponent = ({ onLogout }) => {
           <div className="container-fluid">
             <div className="d-flex align-items-center">
               <img src={realestate_log} style={{ width: "20%", height: '40px' }} className="d-block" alt="Ecommerce Logo" />
-              <h3 className="mt-0 mx-2" style={{ color: "#2F4F4F" }}>SUBRENTIFY</h3>
+              <h3 className="mt-0 mx-2" style={{ color: "#2F4F4F" }}>SUPRENTIFY</h3>
             </div>
             <button className="navbar-toggler" type="button" onClick={toggleNav} data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
@@ -56,6 +57,7 @@ const TopNavBarComponent = ({ onLogout }) => {
               >
                 Filter&nbsp;&nbsp;
               </NavLink>
+          <span className="navbar-item-title mx-2"  style={{ fontSize: "20px", color: isNavOpen ? 'blue' : '#2F4F4F' }}>{user.user.firstName}</span>
               <div className="ml-5">
                 <button className="btn mr-2" style={{ backgroundColor: "#2F4F4F", color: "white" }} onClick={onLogout}>
                   Logout
