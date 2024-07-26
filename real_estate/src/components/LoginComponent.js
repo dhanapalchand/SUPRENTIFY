@@ -4,7 +4,7 @@ import axios from "axios";
 import { useNavigate,Link } from "react-router-dom";
 import { authContext } from "../hooks/authContext";
 import '../css/LoginComponent.css';
-import rectangle from '../images/rectangle.png';
+
 import { API_URL } from "./env";
   
 function Login() {
@@ -86,7 +86,7 @@ const [email, setEmail] = useState("");
  
  
   return (
-    <div className="container-fluid primary-color">
+    <div className="container-fluid ">
       <section className=" row">
  
          {/* left */}
@@ -129,7 +129,7 @@ const [email, setEmail] = useState("");
                 </span>
               </div>
                
-              <div className="mb-2">
+              {/* <div className="mb-2">
                 <input
                   type="checkbox"
                   className="m-2"
@@ -137,7 +137,7 @@ const [email, setEmail] = useState("");
                   onChange={handleRememberMeChange}
                 />
                 <span>Remember Me</span>
-              </div><br />
+              </div><br /> */}
  
                  <div>
               {error ? (
@@ -157,9 +157,11 @@ const [email, setEmail] = useState("");
           </div>
              </div>  
                 {/* right */} 
-                <div class="vh-100 col-md-6 d-flex justify-content-end">
+                <div class=" col-md-5 d-flex justify-content-center">
                       <div>
-                      <img style={{height:"100%",width:"100%"}} src={rectangle} alt="altimage"/>
+                      {/* <img style={{height:"100%",width:"100%"}} src={rectangle} alt="altimage"/> */}
+
+    <dotlottie-player src="https://lottie.host/51fcd862-5471-4a12-aa60-67948099b4c5/b4ZFhxVcjO.json" background="transparent" speed="1" style={{width: "550px", height: "600px"}} className="img-responsive mt-5"loop autoplay></dotlottie-player>
                        </div>                  
                 </div>
       </section>

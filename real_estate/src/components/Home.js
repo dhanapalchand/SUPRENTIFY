@@ -18,8 +18,7 @@ const Home = () => {
   const { showFilterBar } = useContext(FilterContext);
   const [likedLands, setLikedLands] = useState([]);
   const [likeData, setLikeData] = useState([]);
- 
-console.log(user);
+
   const buttonStyle = {
     position: 'fixed',
     top: '90%',

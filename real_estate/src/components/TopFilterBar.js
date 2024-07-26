@@ -30,8 +30,8 @@ const TopFilterBar = (props) => {
 
   return (
     <>
-      <div className="row d-flex justify-content-center">
-        <div className="col-3 d-flex justify-content-center">
+      <div className="row d-flex justify-content-center"> 
+        <div className="col-3 d-flex justify-content-center"  >
           <div className="mb-2">
             <label htmlFor="areaFilter" className="form-label my-2" style={{ fontWeight: 600, color: "#2F4F4F" }}>Filter by Area:</label>
             <input
