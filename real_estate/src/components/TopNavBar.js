@@ -7,7 +7,8 @@ import { FilterContext } from './FilterContext';
 import { authContext } from '../hooks/authContext';
 
 
-const TopNavBarComponent = ({ onLogout }) => {
+
+const TopNavBarComponent = ({ onLogout } ) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const { toggleFilterBar } = useContext(FilterContext);
   const { user } = useContext(authContext);
@@ -57,6 +58,8 @@ const TopNavBarComponent = ({ onLogout }) => {
               >
                 Filter&nbsp;&nbsp;
               </NavLink>
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" ><path fill="currentColor" d="M11 10v2H9v2H7v-2H5.8c-.4 1.2-1.5 2-2.8 2c-1.7 0-3-1.3-3-3s1.3-3 3-3c1.3 0 2.4.8 2.8 2zm-8 0c-.6 0-1 .4-1 1s.4 1 1 1s1-.4 1-1s-.4-1-1-1m13 4c2.7 0 8 1.3 8 4v2H8v-2c0-2.7 5.3-4 8-4m0-2c-2.2 0-4-1.8-4-4s1.8-4 4-4s4 1.8 4 4s-1.8 4-4 4"></path></svg>
+
           <span className="navbar-item-title mx-2"  style={{ fontSize: "20px", color: isNavOpen ? 'blue' : '#2F4F4F' }}>{user.user.firstName}</span>
               <div className="ml-5">
                 <button className="btn mr-2" style={{ backgroundColor: "#2F4F4F", color: "white" }} onClick={onLogout}>
