@@ -256,11 +256,11 @@ const Home = () => {
   return (
     <div>
       {showFilterBar && <TopFilterBar setLandData={setLandData} landData={landData} setFilteredLandData={setFilteredLandData} />}
-      <div className="row mb-3">
+      <div className="row mb-3 mx-0">
         {filteredLandData.map((land) => {
           const likesCount = likeData.filter(like => like.landId === land._id).length;
           return (
-            <div key={land._id} className="col-md-3 mb-3">
+            <div key={land._id} className="col-md-3 mb-3 mx-0">
               <div className="card mt-3">
                 <img
                   src={land.imgUrl || landimg}
@@ -307,7 +307,7 @@ const Home = () => {
           );
         })}
       </div>
-      <div className="text-end" style={{ paddingTop: '3%' }}>
+      <div className="" style={{ paddingTop: '3%' }}>
   {user.user.role !== 'buyer' && (
     <button
       type="button"
