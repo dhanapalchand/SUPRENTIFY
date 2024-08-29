@@ -103,90 +103,106 @@ const LandDetails = () => {
 
   return (
     <div>
-      <h2>Enter Land Details for Selling</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="place">Place:</label>
-          <input
-            type="text"
-            id="place"
-            value={place}
-            onChange={(e) => setPlace(e.target.value)}
-            required
-          />
+  
+        <div class="container-fluid primary-color">
+          
+            <div class='text-left'>
+              <h2>Enter Land Details for Sellings</h2>
+              <form onSubmit={handleSubmit}>
+                <div>
+                  <label htmlFor="place">Place:</label>
+                  <input
+                    type="text"
+                    id="place"
+                    value={place}
+                    className='form-control mb-4'
+                    onChange={(e) => setPlace(e.target.value)}
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="area">Area:</label>
+                  <input
+                    class="form-control mb-4"
+                    type="text"
+                    id="area"
+                    value={area}
+                    onChange={(e) => setArea(e.target.value)}
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="bedrooms">Number of Bedrooms:</label>
+                  <input
+                    class="form-control mb-4"
+                    type="number"
+                    id="bedrooms"
+                    value={bedrooms}
+                    onChange={(e) => setBedrooms(e.target.value)}
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="bathrooms">Number of Bathrooms:</label>
+                  <input
+                    class="form-control mb-4"
+                    type="number"
+                    id="bathrooms"
+                    value={bathrooms}
+                    onChange={(e) => setBathrooms(e.target.value)}
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="nearbyHospitals">Hospitals Nearby:</label>
+                  <input
+                    className="form-check-input form-check-xl"
+                    type="checkbox"
+                    id="nearbyHospitals"
+                    checked={nearbyHospitals}
+                    onChange={(e) => setNearbyHospitals(e.target.checked)}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="nearbyColleges">Colleges Nearby:</label>
+                  <input
+                    className="form-check-input form-check-xl"
+                    type="checkbox"
+                    id="nearbyColleges"
+                    checked={nearbyColleges}
+                    onChange={(e) => setNearbyColleges(e.target.checked)}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="price">Price:</label>
+                  <input
+                    type="number"
+                    class="form-control mb-4"
+                    id="price"
+                    value={price}
+                    onChange={(e) => setPrice(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="fileInput">Select Home image:</label> &nbsp;
+                  <input
+                    type="file"
+                    id="fileInput"
+                    className="form-control-file btn btn"
+                    onChange={handleFileChange}
+                  /> &nbsp;
+                    <button type="button" className="btn btn-success"onClick={handleUpload}>Upload Image</button><br></br>
+                </div>
+              
+                <button type="submit" className="btn btn-primary">Submit</button>
+              </form>
+              {uploadStatus && <div className="alert alert-info mt-3">{uploadStatus}</div>}
+            </div>
+          </div>
         </div>
-        <div>
-          <label htmlFor="area">Area:</label>
-          <input
-            type="text"
-            id="area"
-            value={area}
-            onChange={(e) => setArea(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="bedrooms">Number of Bedrooms:</label>
-          <input
-            type="number"
-            id="bedrooms"
-            value={bedrooms}
-            onChange={(e) => setBedrooms(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="bathrooms">Number of Bathrooms:</label>
-          <input
-            type="number"
-            id="bathrooms"
-            value={bathrooms}
-            onChange={(e) => setBathrooms(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="nearbyHospitals">Hospitals Nearby:</label>
-          <input
-            type="checkbox"
-            id="nearbyHospitals"
-            checked={nearbyHospitals}
-            onChange={(e) => setNearbyHospitals(e.target.checked)}
-          />
-        </div>
-        <div>
-          <label htmlFor="nearbyColleges">Colleges Nearby:</label>
-          <input
-            type="checkbox"
-            id="nearbyColleges"
-            checked={nearbyColleges}
-            onChange={(e) => setNearbyColleges(e.target.checked)}
-          />
-        </div>
-        <div>
-          <label htmlFor="price">Price:</label>
-          <input
-            type="number"
-            id="price"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="fileInput">Select an image:</label>
-          <input
-            type="file"
-            id="fileInput"
-            className="form-control-file"
-            onChange={handleFileChange}
-          />
-        </div>
-        <button type="button" onClick={handleUpload}>Upload Image</button>
-        <button type="submit" className="btn btn-primary">Submit</button>
-      </form>
-      {uploadStatus && <div className="alert alert-info mt-3">{uploadStatus}</div>}
-    </div>
+
+
   );
 };
 
