@@ -59,13 +59,13 @@ const InterestedLandList = () => {
 
     return (
         <div>
-            <h2>Interested Land List</h2>
+            <h2>Interested Home List</h2>
             <table className="table">
                 <thead>
                     <tr>
-                        <th>Land ID</th>
+                        <th>City</th>
                         <th>Place</th>
-                        <th>Action</th>
+                        <th>NumberOfBedrooms</th>
                     </tr>
                 </thead>
                 <tbody>

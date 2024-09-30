@@ -3,6 +3,7 @@ import { authContext } from '../hooks/authContext';
 import axios from 'axios';
 import { getDownloadURL, uploadBytesResumable, ref } from 'firebase/storage';
 import { storage } from '../firebase';
+import { API_URL } from './env';
 
 const LandDetails = () => {
   const [place, setPlace] = useState('');
@@ -64,7 +65,7 @@ const LandDetails = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:8000/post_land',
+        `${API_URL}/post_land`,
         {
           user: userId,
           place,
@@ -106,11 +107,12 @@ const LandDetails = () => {
   
         <div class="container-fluid primary-color">
           
+              <h2 >Enter Home Details for Rent</h2>
             <div class='text-left'>
-              <h2>Enter Land Details for Sellings</h2>
               <form onSubmit={handleSubmit}>
-                <div>
-                  <label htmlFor="place">Place:</label>
+                <div className='row'>
+                <div className='col-6'>
+                  <label htmlFor="place">District:</label>
                   <input
                     type="text"
                     id="place"
@@ -120,8 +122,8 @@ const LandDetails = () => {
                     required
                   />
                 </div>
-                <div>
-                  <label htmlFor="area">Area:</label>
+                <div className='col-6'>
+                  <label htmlFor="area">City:</label>
                   <input
                     class="form-control mb-4"
                     type="text"
@@ -131,7 +133,9 @@ const LandDetails = () => {
                     required
                   />
                 </div>
-                <div>
+                </div>
+                <div className='row'>
+                <div className='col-6'>
                   <label htmlFor="bedrooms">Number of Bedrooms:</label>
                   <input
                     class="form-control mb-4"
@@ -142,7 +146,7 @@ const LandDetails = () => {
                     required
                   />
                 </div>
-                <div>
+                <div  className='col-6'>
                   <label htmlFor="bathrooms">Number of Bathrooms:</label>
                   <input
                     class="form-control mb-4"
@@ -153,28 +157,43 @@ const LandDetails = () => {
                     required
                   />
                 </div>
-                <div>
-                  <label htmlFor="nearbyHospitals">Hospitals Nearby:</label>
+                </div>
+                <div className='row'>
+                <div className='col-6'>
+               
                   <input
                     className="form-check-input form-check-xl"
                     type="checkbox"
                     id="nearbyHospitals"
                     checked={nearbyHospitals}
                     onChange={(e) => setNearbyHospitals(e.target.checked)}
-                  />
+                  />&nbsp;
+                     <label htmlFor="nearbyHospitals">Hospitals Nearby</label>
                 </div>
-                <div>
-                  <label htmlFor="nearbyColleges">Colleges Nearby:</label>
+                <div className='col-6'>
+                
                   <input
                     className="form-check-input form-check-xl"
                     type="checkbox"
                     id="nearbyColleges"
                     checked={nearbyColleges}
                     onChange={(e) => setNearbyColleges(e.target.checked)}
-                  />
+                  />&nbsp;
+                    <label htmlFor="nearbyColleges">Colleges Nearby</label>&nbsp;&nbsp;
+                    <input
+                    className="form-check-input form-check-xl"
+                    type="checkbox"
+                    id="nearbyColleges"
+                    checked={nearbyColleges}
+                    onChange={(e) => setNearbyColleges(e.target.checked)}
+                  />&nbsp;
+                    <label htmlFor="nearbyColleges">Parking available</label>
                 </div>
-                <div>
-                  <label htmlFor="price">Price:</label>
+                </div>
+                <br></br>
+                <div className='row'>
+                <div className='col-6'>
+                  <label htmlFor="price">Monthly Rent:</label>
                   <input
                     type="number"
                     class="form-control mb-4"
@@ -184,6 +203,27 @@ const LandDetails = () => {
                     required
                   />
                 </div>
+                <div className='col-6'>
+                  <label htmlFor="price"> Advance Rent :</label>
+                  <input
+                    type="number"
+                    class="form-control mb-4"
+                    id="price"
+                    value={price}
+                    onChange={(e) => setPrice(e.target.value)}
+                    required
+                  />
+                </div>
+                </div>
+                <label htmlFor="price"> Full Address :</label>
+                <textarea
+  className="form-control mb-4"
+  id="price"
+  value={price}
+  onChange={(e) => setPrice(e.target.value)}
+  required
+></textarea>
+
                 <div className="form-group">
                   <label htmlFor="fileInput">Select Home image:</label> &nbsp;
                   <input
@@ -195,9 +235,9 @@ const LandDetails = () => {
                     <button type="button" className="btn btn-success"onClick={handleUpload}>Upload Image</button><br></br>
                 </div>
               
+              {uploadStatus && <div className="alert alert-info mt-3">{uploadStatus}</div>}
                 <button type="submit" className="btn btn-primary">Submit</button>
               </form>
-              {uploadStatus && <div className="alert alert-info mt-3">{uploadStatus}</div>}
             </div>
           </div>
         </div>

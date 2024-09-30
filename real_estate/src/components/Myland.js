@@ -62,7 +62,7 @@ const UserLandDetails = () => {
 
     return (
         <div>
-            <h2>User Land Details</h2>
+            <h2>My Home Details</h2>
             {userData && userData.length > 0 ? (
                 <table className="table">
                     <thead>
@@ -73,8 +73,12 @@ const UserLandDetails = () => {
                             <th>Bathrooms</th>
                             <th>Nearby Hospitals</th>
                             <th>Nearby Colleges</th>
-                            <th>Price</th>
-                            <th>Actions</th>
+                            <th>Rent</th>
+                            <th>Insights</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -88,9 +92,13 @@ const UserLandDetails = () => {
                                 <td>{land.nearbyColleges ? 'Yes' : 'No'}</td>
                                 <td>${land.price}</td>
                                 <td>
+                                <button  className="btn btn-primary me-2" onClick={() => handleDelete(land._id)}>View</button>
+</td><td>
                                     <button   className="btn btn-success me-2"onClick={() => handleUpdate(land._id)}>Update</button>
+                                    </td><td>
                                     <button  className="btn btn-danger me-2" onClick={() => handleDelete(land._id)}>Delete</button>
-                                </td>
+                                    </td>
+                                
                             </tr>
                         ))}
                     </tbody>

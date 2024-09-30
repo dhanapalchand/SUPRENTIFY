@@ -21,7 +21,7 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   {
-    title: 'MyLands',
+    title: 'MyHomes',
     path: '/dashboard/myland',
     cName: 'nav-text'
   },

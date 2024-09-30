@@ -33,19 +33,23 @@ function App() {
         <Route path="/login" element={!user ? <Login /> : <Navigate to="/dashboard/home" />} />
         <Route path="/signup" element={!user ? <RegistrationComponent /> : <Navigate to="/dashboard/home" />} />
 
-        {user && (
-          <Route path="/dashboard/*" element={<TopNavBarComponent onLogout={logoutHandler} />}> {/* Pass the onFilterClick function */}
-            <Route path="home" element={<Home />} />
-            <Route path="landdetails" element={<LandDetails />} />
-            <Route path="myland" element={<Myland />} />
-            <Route path="like" element={<Like />} />
-            <Route path="landupdate/:id" element={<LandUpdate />} />
-            <Route path="interest" element={<Interest />} />
-            <Route path="userdetails/:id" element={<Profile />} />
-            <Route path="aboutland/:id" element={<SingleLand />} />
-            <Route path="contactdetails/:id" element={<ContactUs />} />
-          </Route>
-        )}
+       {user ? (
+  <Route path="/dashboard/*" element={<TopNavBarComponent onLogout={logoutHandler} />}> 
+    {/* Pass the onFilterClick function */}
+    <Route path="home" element={<Home />} />
+    <Route path="landdetails" element={<LandDetails />} />
+    <Route path="myland" element={<Myland />} />
+    <Route path="like" element={<Like />} />
+    <Route path="landupdate/:id" element={<LandUpdate />} />
+    <Route path="interest" element={<Interest />} />
+    <Route path="userdetails/:id" element={<Profile />} />
+    <Route path="aboutland/:id" element={<SingleLand />} />
+    <Route path="contactdetails/:id" element={<ContactUs />} />
+  </Route>
+) : (
+  // Redirect to login page if user is not authenticated
+  <Route path="*" element={<Navigate to="/login" replace />} />
+)}
       </Routes>
     </FilterProvider>
   );

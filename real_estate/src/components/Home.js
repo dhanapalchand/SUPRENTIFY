@@ -271,7 +271,8 @@ const Home = () => {
                 <div className="card-body">
                   <h5 className="card-title">{land.place}</h5>
                   <p className="card-text">Area: {land.area}</p>
-                  <p className="card-text">Price: ${land.price}</p>
+                  <p className="card-text">Rent: ${land.price} Monthly</p>
+                  <p className="card-text">Home Type: {land.numberOfBedrooms} BHK</p>
                   {/* {showMore[land._id] && (
                     <div>
                       <p className="card-text">Bedrooms: {land.numberOfBedrooms}</p>
@@ -280,12 +281,8 @@ const Home = () => {
                       <p className="card-text">Nearby Colleges: {land.nearbyColleges ? 'Yes' : 'No'}</p>
                     </div>
                   )} */}
-                  <p className="card-text">
-                    <IoHeart style={{ color: land.liked ? 'red' : 'black', marginRight: '5px', cursor: 'pointer' }}
-                      onClick={() => handleLikeClick(land)} />
-                    {likesCount}
-                  </p>
-                  <div className="text-end">
+                 
+                  {/* <div className="text-end">
                     <button
                       type="button"
                       className="btn btn-success me-2"
@@ -293,6 +290,11 @@ const Home = () => {
                     >
                       Interested
                     </button>
+                     <p className="card-text">
+                    <IoHeart style={{ color: land.liked ? 'red' : 'black', marginRight: '5px', cursor: 'pointer' }}
+                      onClick={() => handleLikeClick(land)} />
+                    {likesCount}
+                  </p>
                     <button
                       type="button"
                       className="btn btn-secondary"
@@ -300,7 +302,28 @@ const Home = () => {
                     >
                       More Details
                     </button>
-                  </div>
+                  </div> */}
+                  <div className="d-flex align-items-center">
+  <p className="card-text mb-0">
+    <IoHeart
+      style={{
+        color: land.liked ? 'red' : 'black',
+        marginRight: '5px',
+        cursor: 'pointer'
+      }}
+      onClick={() => handleLikeClick(land)}
+    />
+    {likesCount}
+  </p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button
+    type="button"
+    className="btn btn-secondary ml-3"
+    onClick={() => toggleShowMore(land._id)}
+  >
+    More Details
+  </button>
+</div>
+
                 </div>
               </div>
             </div>
@@ -315,7 +338,7 @@ const Home = () => {
       onClick={handleAddLandClick}
       style={buttonStyle}
     >
-      <span>Add Land</span>
+      <span>Add Home</span>
     </button>
   )}
 </div>
