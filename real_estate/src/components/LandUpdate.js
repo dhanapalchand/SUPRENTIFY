@@ -69,7 +69,7 @@ const LandUpdate = () => {
 
   return (
     <div>
-      <h2>Update Land Details</h2>
+      <h2 style={{ textAlign: 'center' }} >Update Home Details</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="place">Place:</label>

@@ -48,9 +48,11 @@ const Profile = () => {
 
     return (
         <div>
-            <h2>User Profile</h2>
+         <h2 style={{ textAlign: 'center' }} className='my-4'>Home Owner Profile</h2>
+
+
             {userData ? (
-                <div className="card">
+                <div className="card mx-5 mb-3">
                     <div className="card-body">
                         <h5 className="card-title">User Details</h5>
                         <p className="card-text">First Name: {userData.firstName}</p>
@@ -62,8 +64,10 @@ const Profile = () => {
             ) : (
                 <p>Loading...</p>
             )}
-            <button className="btn btn-primary" onClick={handleBackButtonClick}>Back</button>
+            <div className='mx-5'>
+            <button className="btn btn-primary mx-2" onClick={handleBackButtonClick}>Back</button>
             <button className="btn btn-primary" onClick={handleMailButtonClick}>Mail To Interest</button>
+            </div>
         </div>
     );
 };

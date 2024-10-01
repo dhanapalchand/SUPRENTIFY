@@ -19,45 +19,82 @@ const Home = () => {
   const [likedLands, setLikedLands] = useState([]);
   const [likeData, setLikeData] = useState([]);
 
-  const buttonStyle = {
+  // const buttonStyle = {
+  //   position: 'fixed',
+  //   top: '90%',
+  //   left: '90%',
+  // };
+
+  const [buttonStyle, setButtonStyle] = useState({
     position: 'fixed',
     top: '90%',
     left: '90%',
+  });
+
+  // Function to update button style based on screen width
+  const updateButtonStyle = () => {
+    if (window.innerWidth <= 768) {
+      // Mobile styles
+      setButtonStyle({
+        position: 'fixed',
+        top: '90%', // Adjust the position for mobile
+        left: '70%', // Adjust the position for mobile
+        width: '100px', // Optionally change size for mobile
+        height: '70px',
+      });
+    } else {
+      // Desktop styles
+      setButtonStyle({
+        position: 'fixed',
+        top: '90%',
+        left: '90%',
+      });
+    }
   };
+
+  // Run on component mount and when window is resized
+  useEffect(() => {
+    updateButtonStyle();
+    window.addEventListener('resize', updateButtonStyle);
+
+    return () => {
+      window.removeEventListener('resize', updateButtonStyle);
+    };
+  }, []);
 
   const handleAddLandClick = () => {
     navigate('/dashboard/landdetails');
   };
 
-  const handleInterestedClick = async (land) => {
-    try {
-      const response = await axios.post(`${API_URL}/interest_land`, {
-        userId: user.id,
-        landId: land._id,
-        landDetails: land,
-      }, {
-        headers: {
-          Authorization: `Bearer ${usertoken}`,
-        },
-      });
-      if (response.status >= 200 && response.status < 300) {
-        console.log('Interest registered successfully');
-        navigate(`/dashboard/userdetails/${land.user}`);
-      } else {
-        console.log('Request failed with status code:', response.status);
-        navigate(`/dashboard/userdetails/${land.user}`);
-      }
-    } catch (error) {
-      console.error('Error:', error.message);
-      navigate(`/dashboard/userdetails/${land.user}`);
-      if (error.response) {
-        console.error('Error Response Data:', error.response.data);
-        console.error('Error Status Code:', error.response.status);
-        console.error('Error Headers:', error.response.headers);
-        navigate(`/dashboard/userdetails/${land.user}`);
-      }
-    }
-  };
+  // const handleInterestedClick = async (land) => {
+  //   try {
+  //     const response = await axios.post(`${API_URL}/interest_land`, {
+  //       userId: user.id,
+  //       landId: land._id,
+  //       landDetails: land,
+  //     }, {
+  //       headers: {
+  //         Authorization: `Bearer ${usertoken}`,
+  //       },
+  //     });
+  //     if (response.status >= 200 && response.status < 300) {
+  //       console.log('Interest registered successfully');
+  //       navigate(`/dashboard/userdetails/${land.user}`);
+  //     } else {
+  //       console.log('Request failed with status code:', response.status);
+  //       navigate(`/dashboard/userdetails/${land.user}`);
+  //     }
+  //   } catch (error) {
+  //     console.error('Error:', error.message);
+  //     navigate(`/dashboard/userdetails/${land.user}`);
+  //     if (error.response) {
+  //       console.error('Error Response Data:', error.response.data);
+  //       console.error('Error Status Code:', error.response.status);
+  //       console.error('Error Headers:', error.response.headers);
+  //       navigate(`/dashboard/userdetails/${land.user}`);
+  //     }
+  //   }
+  // };
 
   const handleRemoveLike = async (likedLands, land) => {
     try {
@@ -333,10 +370,10 @@ const Home = () => {
       <div className="" style={{ paddingTop: '3%' }}>
   {user.user.role !== 'buyer' && (
     <button
-      type="button"
-      className="btn btn-primary rounded-1 p-2 px-4 mb-4"
-      onClick={handleAddLandClick}
-      style={buttonStyle}
+    className="btn btn-primary rounded-1 p-2 px-4 mb-4"
+    onClick={handleAddLandClick}
+    style={buttonStyle}
+     
     >
       <span>Add Home</span>
     </button>
