@@ -106,7 +106,7 @@ export default function RegistrationComponent() {
     }
 
     try {
-      const response = await axios.post(
+       await axios.post(
         `${API_URL}/signup`,
         {
           firstName,
