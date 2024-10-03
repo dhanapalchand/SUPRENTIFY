@@ -168,18 +168,19 @@ const LandDetails = () => {
                     checked={nearbyHospitals}
                     onChange={(e) => setNearbyHospitals(e.target.checked)}
                   />&nbsp;
-                     <label htmlFor="nearbyHospitals">Hospitals Nearby</label>
-                </div>
-                <div className='col-6'>
-                
-                  <input
+                     <label htmlFor="nearbyHospitals">Hospitals Nearby</label>&nbsp;&nbsp;
+                     <input
                     className="form-check-input form-check-xl"
                     type="checkbox"
                     id="nearbyColleges"
                     checked={nearbyColleges}
                     onChange={(e) => setNearbyColleges(e.target.checked)}
                   />&nbsp;
-                    <label htmlFor="nearbyColleges">Colleges Nearby</label>&nbsp;&nbsp;
+                    <label htmlFor="nearbyColleges">Colleges Nearby</label>
+                </div>
+                <div className='col-6'>
+                
+                 &nbsp;&nbsp;
                     <input
                     className="form-check-input form-check-xl"
                     type="checkbox"
